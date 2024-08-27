@@ -296,7 +296,9 @@ Transform:
   m_GameObject: {fileID: 1416070918}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+
   m_LocalPosition: {x: -1.72, y: -0.35, z: 0}
+
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -344,6 +346,7 @@ MonoBehaviour:
   rb: {fileID: 1416070921}
   MoveSpeedHorizontal: 3
   MoveSpeedVertical: 3
+
   anim: {fileID: 1416070923}
 --- !u!95 &1416070923
 Animator:
@@ -366,6 +369,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+
+  facingDirectionUp: 0
+  facingDirectionRight: 0
+  whatIsBorder:
+    serializedVersion: 2
+    m_Bits: 64
+  distanceFromCenter: 0.45
+  touchingTopBorder: 0
+  touchingRightBorder: 0
+  touchingTopBorderDistance: -0.68
+  touchingRightBorderDistance: 0.36
+
 --- !u!1 &1557329992
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +391,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1557329994}
   - component: {fileID: 1557329993}
-  m_Layer: 0
+  - component: {fileID: 1557329995}
+  m_Layer: 6
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,12 +460,47 @@ Transform:
   m_GameObject: {fileID: 1557329992}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: 0, z: 0}
-  m_LocalScale: {x: 5.2623, y: 4.9344, z: 1}
+  m_LocalPosition: {x: 0.222, y: -0.3636, z: 0}
+  m_LocalScale: {x: 5.666445, y: 5.661731, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1557329995
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557329992}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0014253921, y: -0.0028540422}
+  serializedVersion: 2
+  m_Radius: 0.49572197
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
