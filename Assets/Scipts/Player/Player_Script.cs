@@ -8,28 +8,14 @@ public class Player_Script : MonoBehaviour
 
     public Rigidbody2D rb;
 
-    //Gamenensa
-   
     public float MoveSpeedHorizontal;
     public float MoveSpeedVertical;
     public float facingDirectionUp=1;
     public float facingDirectionRight=1;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    [Header("Collision Info")]
-    public LayerMask whatIsBorder;
-    public float distanceFromCenter;
-    public bool touchingTopBorder;
-    public bool touchingRightBorder;
-    public float touchingTopBorderDistance;
-    public float touchingRightBorderDistance;
-=======
+
     private Animator anim;
->>>>>>> parent of 0c3e0ba (Name Fix & More Animations)
-=======
-    private Animator anim;
->>>>>>> parent of 0c3e0ba (Name Fix & More Animations)
+
 
 
     // Start is called before the first frame update
@@ -40,24 +26,7 @@ public class Player_Script : MonoBehaviour
   
     // Update is called once per frame
     void Update()
-    {
-        collisionChecks();
-        MoveHorizontal();
-        MoveVertical();
-<<<<<<< HEAD
-        OnDrawGizmos();
-=======
-
-       
-    }
-
-    private void AnimationControllers()
-    {
-        //.SetBool("isIdle", isIdle);
-<<<<<<< HEAD
->>>>>>> parent of 0c3e0ba (Name Fix & More Animations)
-=======
->>>>>>> parent of 0c3e0ba (Name Fix & More Animations)
+ 
     }
 
     public void MoveHorizontal()
@@ -110,45 +79,9 @@ public class Player_Script : MonoBehaviour
             facingDirectionUp = 1;
         }
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-    public void collisionChecks() {
-        Debug.Log(transform.position.y);
-        Vector2 verticalRayOrigin = new Vector2(transform.position.x, transform.position.y - distanceFromCenter);
 
-        if (Input.GetAxisRaw("Vertical") < 0)
-        {
-            touchingTopBorder = Physics2D.Raycast(verticalRayOrigin, Vector2.down, touchingTopBorderDistance * facingDirectionUp, whatIsBorder);
-        } 
-        else if (Input.GetAxisRaw("Vertical") > 0)
-        {
-            touchingTopBorder = Physics2D.Raycast(transform.position, Vector2.down, touchingTopBorderDistance * facingDirectionUp, whatIsBorder);
-        }
-        
-        
-        touchingRightBorder = Physics2D.Raycast(transform.position, Vector2.right, touchingRightBorderDistance*facingDirectionRight, whatIsBorder);
-       
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Vector2 verticalRayOrigin = new Vector2(transform.position.x, transform.position.y - distanceFromCenter);
-        if (Input.GetAxisRaw("Vertical") < 0)
-        {
-            Gizmos.DrawLine(verticalRayOrigin, new Vector3(transform.position.x, transform.position.y - touchingTopBorderDistance * facingDirectionUp));
 
-        }
-        else if(Input.GetAxisRaw("Vertical") > 0)
-        { 
-            Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - touchingTopBorderDistance*facingDirectionUp));
-        }
-        Gizmos.DrawLine(transform.position, new Vector3(touchingRightBorderDistance*facingDirectionRight + transform.position.x, transform.position.y));
-       // Gizmos.DrawLine(transform.position, new Vector3(touchingRightBorderDistance*facingDirectionRight + transform.position.x, transform.position.y));
-    }
-=======
->>>>>>> parent of 0c3e0ba (Name Fix & More Animations)
-=======
->>>>>>> parent of 0c3e0ba (Name Fix & More Animations)
+
 }
 
