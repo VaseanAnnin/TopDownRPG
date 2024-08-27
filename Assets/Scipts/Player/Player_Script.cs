@@ -8,13 +8,14 @@ public class Player_Script : MonoBehaviour
 
     public Rigidbody2D rb;
 
-
+    //Gamenensa
    
     public float MoveSpeedHorizontal;
     public float MoveSpeedVertical;
     public float facingDirectionUp=1;
     public float facingDirectionRight=1;
 
+<<<<<<< HEAD
     [Header("Collision Info")]
     public LayerMask whatIsBorder;
     public float distanceFromCenter;
@@ -22,6 +23,9 @@ public class Player_Script : MonoBehaviour
     public bool touchingRightBorder;
     public float touchingTopBorderDistance;
     public float touchingRightBorderDistance;
+=======
+    private Animator anim;
+>>>>>>> parent of 0c3e0ba (Name Fix & More Animations)
 
 
     // Start is called before the first frame update
@@ -36,7 +40,17 @@ public class Player_Script : MonoBehaviour
         collisionChecks();
         MoveHorizontal();
         MoveVertical();
+<<<<<<< HEAD
         OnDrawGizmos();
+=======
+
+       
+    }
+
+    private void AnimationControllers()
+    {
+        //.SetBool("isIdle", isIdle);
+>>>>>>> parent of 0c3e0ba (Name Fix & More Animations)
     }
 
     public void MoveHorizontal()
@@ -89,6 +103,7 @@ public class Player_Script : MonoBehaviour
             facingDirectionUp = 1;
         }
     }
+<<<<<<< HEAD
 
     public void collisionChecks() {
         Debug.Log(transform.position.y);
@@ -123,5 +138,7 @@ public class Player_Script : MonoBehaviour
         Gizmos.DrawLine(transform.position, new Vector3(touchingRightBorderDistance*facingDirectionRight + transform.position.x, transform.position.y));
        // Gizmos.DrawLine(transform.position, new Vector3(touchingRightBorderDistance*facingDirectionRight + transform.position.x, transform.position.y));
     }
+=======
+>>>>>>> parent of 0c3e0ba (Name Fix & More Animations)
 }
 
