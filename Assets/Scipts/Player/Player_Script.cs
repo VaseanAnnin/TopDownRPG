@@ -16,6 +16,7 @@ public class Player_Script : MonoBehaviour
     public float facingDirectionRight=1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     [Header("Collision Info")]
     public LayerMask whatIsBorder;
     public float distanceFromCenter;
@@ -23,6 +24,9 @@ public class Player_Script : MonoBehaviour
     public bool touchingRightBorder;
     public float touchingTopBorderDistance;
     public float touchingRightBorderDistance;
+=======
+    private Animator anim;
+>>>>>>> parent of 0c3e0ba (Name Fix & More Animations)
 =======
     private Animator anim;
 >>>>>>> parent of 0c3e0ba (Name Fix & More Animations)
@@ -50,6 +54,9 @@ public class Player_Script : MonoBehaviour
     private void AnimationControllers()
     {
         //.SetBool("isIdle", isIdle);
+<<<<<<< HEAD
+>>>>>>> parent of 0c3e0ba (Name Fix & More Animations)
+=======
 >>>>>>> parent of 0c3e0ba (Name Fix & More Animations)
     }
 
@@ -104,6 +111,7 @@ public class Player_Script : MonoBehaviour
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     public void collisionChecks() {
         Debug.Log(transform.position.y);
@@ -138,6 +146,8 @@ public class Player_Script : MonoBehaviour
         Gizmos.DrawLine(transform.position, new Vector3(touchingRightBorderDistance*facingDirectionRight + transform.position.x, transform.position.y));
        // Gizmos.DrawLine(transform.position, new Vector3(touchingRightBorderDistance*facingDirectionRight + transform.position.x, transform.position.y));
     }
+=======
+>>>>>>> parent of 0c3e0ba (Name Fix & More Animations)
 =======
 >>>>>>> parent of 0c3e0ba (Name Fix & More Animations)
 }
