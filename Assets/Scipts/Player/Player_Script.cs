@@ -10,8 +10,10 @@ public class Player_Script : MonoBehaviour
     public float MoveSpeedHorizontal;
     public float MoveSpeedVertical;
 
-    private Animator anim;
+    public Animator anim;
 
+    private bool facingRight = true;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +29,20 @@ public class Player_Script : MonoBehaviour
         MoveHorizontal();
         MoveVertical();
 
-       
+        FlipControllerHorizontal();
+        
+
+
     }
 
     private void AnimationControllers()
     {
         //.SetBool("isIdle", isIdle);
+        bool isMovingHorizontal = rb.velocity.x != 0;
+        anim.SetBool("isMovingHorizontal", isMovingHorizontal);
+
+        bool isMovingDown = rb.velocity.y < 0;
+        anim.SetBool("isMovingDown", isMovingDown);
     }
 
     public void MoveHorizontal()
@@ -44,5 +54,23 @@ public class Player_Script : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, MoveSpeedVertical * Input.GetAxisRaw("Vertical"));
     }
+
+    private void FlipControllerHorizontal()
+    {
+        if (facingRight && rb.velocity.x < -.1f)
+            FlipHorizontal();
+        else if (!facingRight && rb.velocity.x > -.1f)
+            FlipHorizontal();
+    }
+
+    
+
+    private void FlipHorizontal()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0, 180, 0);
+    }
+
+    
 }
 
