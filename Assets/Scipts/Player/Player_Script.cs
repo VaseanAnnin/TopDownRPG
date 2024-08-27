@@ -9,7 +9,6 @@ public class Player_Script : MonoBehaviour
     public Rigidbody2D rb;
 
 
-   
     public float MoveSpeedHorizontal;
     public float MoveSpeedVertical;
     public float facingDirectionUp=1;
@@ -23,6 +22,10 @@ public class Player_Script : MonoBehaviour
     public float touchingTopBorderDistance;
     public float touchingRightBorderDistance;
 
+    public Animator anim;
+
+    private bool facingRight = true;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -33,10 +36,32 @@ public class Player_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        AnimationControllers();
+
+        MoveHorizontal();
+        MoveVertical();
+
+        FlipControllerHorizontal();
+        
+
+
+    }
+
+    private void AnimationControllers()
+    {
+        //.SetBool("isIdle", isIdle);
+        bool isMovingHorizontal = rb.velocity.x != 0;
+        anim.SetBool("isMovingHorizontal", isMovingHorizontal);
+
+        bool isMovingDown = rb.velocity.y < 0;
+        anim.SetBool("isMovingDown", isMovingDown);
+
         collisionChecks();
         MoveHorizontal();
         MoveVertical();
         OnDrawGizmos();
+
     }
 
     public void MoveHorizontal()
@@ -123,5 +148,23 @@ public class Player_Script : MonoBehaviour
         Gizmos.DrawLine(transform.position, new Vector3(touchingRightBorderDistance*facingDirectionRight + transform.position.x, transform.position.y));
        // Gizmos.DrawLine(transform.position, new Vector3(touchingRightBorderDistance*facingDirectionRight + transform.position.x, transform.position.y));
     }
+
+    private void FlipControllerHorizontal()
+    {
+        if (facingRight && rb.velocity.x < -.1f)
+            FlipHorizontal();
+        else if (!facingRight && rb.velocity.x > -.1f)
+            FlipHorizontal();
+    }
+
+    
+
+    private void FlipHorizontal()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0, 180, 0);
+    }
+
+    
 }
 
