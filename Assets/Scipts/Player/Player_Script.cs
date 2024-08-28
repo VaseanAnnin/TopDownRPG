@@ -30,12 +30,18 @@ public class Player_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Debug.Log("Code is running");
+
         AnimationControllers();
+        collisionChecks();
 
         MoveHorizontal();
         MoveVertical();
 
         FlipControllerHorizontal();
+        OnDrawGizmos();
+
     }
 
     private void AnimationControllers()
@@ -47,10 +53,6 @@ public class Player_Script : MonoBehaviour
         bool isMovingDown = rb.velocity.y < 0;
         anim.SetBool("isMovingDown", isMovingDown);
 
-        collisionChecks();
-        MoveHorizontal();
-        MoveVertical();
-        OnDrawGizmos();
     }
 
     public void MoveHorizontal()
@@ -76,7 +78,8 @@ public class Player_Script : MonoBehaviour
         {
             facingDirectionRight = 1;
         }
-        //pushed
+
+
     }
 
     public void MoveVertical()
