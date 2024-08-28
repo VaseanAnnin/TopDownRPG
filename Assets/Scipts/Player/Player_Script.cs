@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player_Script : MonoBehaviour
 {
     public Rigidbody2D rb;
-
+    //test
     public float MoveSpeedHorizontal;
     public float MoveSpeedVertical;
     public float facingDirectionUp = 1;
