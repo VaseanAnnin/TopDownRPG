@@ -53,6 +53,9 @@ public class Player_Script : MonoBehaviour
         bool isMovingDown = rb.velocity.y < 0;
         anim.SetBool("isMovingDown", isMovingDown);
 
+        bool isMovingUp = rb.velocity.y > 0;
+        anim.SetBool("isMovingUp", isMovingUp);
+
     }
 
     public void MoveHorizontal()
