@@ -14,7 +14,9 @@ public class Player_Script : MonoBehaviour
 
     [Header("Collision Info")]
     public LayerMask whatIsBorder;
-    public float distanceFromCenter;
+    public float distanceFromCenterV;
+    public float distanceFromCenterH;
+
     public bool touchingTopBorder;
     public bool touchingRightBorder;
     public float touchingTopBorderDistance;
@@ -112,9 +114,13 @@ public class Player_Script : MonoBehaviour
     {
         Debug.Log(transform.position.y);
         Vector2 verticalRayOrigin = new Vector2(
-            transform.position.x,
-            transform.position.y - distanceFromCenter
+            transform.position.x+0.2f,
+            transform.position.y - distanceFromCenterV
         );
+        Vector2 horizontalRayOrigin = new Vector2(
+            transform.position.x,
+            transform.position.y - distanceFromCenterH
+        ) ;
 
         if (Input.GetAxisRaw("Vertical") < 0)
         {
@@ -136,9 +142,9 @@ public class Player_Script : MonoBehaviour
         }
 
         touchingRightBorder = Physics2D.Raycast(
-            transform.position,
+            horizontalRayOrigin,
             Vector2.right,
-            touchingRightBorderDistance * facingDirectionRight,
+            (touchingRightBorderDistance-distanceFromCenterH) * facingDirectionRight,
             whatIsBorder
         );
     }
@@ -148,7 +154,11 @@ public class Player_Script : MonoBehaviour
         Gizmos.color = Color.red;
         Vector2 verticalRayOrigin = new Vector2(
             transform.position.x,
-            transform.position.y - distanceFromCenter
+            transform.position.y - distanceFromCenterV
+        ); 
+        Vector2 horizontalRayOrigin = new Vector2(
+            transform.position.x,
+            transform.position.y - distanceFromCenterH
         );
         if (Input.GetAxisRaw("Vertical") < 0)
         {
@@ -171,7 +181,7 @@ public class Player_Script : MonoBehaviour
             );
         }
         Gizmos.DrawLine(
-            transform.position,
+            horizontalRayOrigin,
             new Vector3(
                 touchingRightBorderDistance * facingDirectionRight + transform.position.x,
                 transform.position.y

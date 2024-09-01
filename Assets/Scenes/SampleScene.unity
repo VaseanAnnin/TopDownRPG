@@ -2616,7 +2616,8 @@ MonoBehaviour:
   whatIsBorder:
     serializedVersion: 2
     m_Bits: 64
-  distanceFromCenter: 0.48
+  distanceFromCenterV: 0
+  distanceFromCenterH: 0
   touchingTopBorder: 0
   touchingRightBorder: 0
   touchingTopBorderDistance: 0
