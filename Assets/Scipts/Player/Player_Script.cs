@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player_Script : MonoBehaviour
 {
     public Rigidbody2D rb;
-
+    //test
     public float MoveSpeedHorizontal;
     public float MoveSpeedVertical;
     public float facingDirectionUp = 1;
@@ -25,6 +25,7 @@ public class Player_Script : MonoBehaviour
     public Animator anim;
 
     private bool facingRight = true;
+    private int facingDirection = 1;
 
     // Start is called before the first frame update
     void Start() { }
@@ -42,6 +43,7 @@ public class Player_Script : MonoBehaviour
         MoveVertical();
 
         FlipControllerHorizontal();
+    
         OnDrawGizmos();
 
     }
@@ -54,6 +56,11 @@ public class Player_Script : MonoBehaviour
 
         bool isMovingDown = rb.velocity.y < 0;
         anim.SetBool("isMovingDown", isMovingDown);
+
+        bool isMovingUp = rb.velocity.y > 0;
+        anim.SetBool("isMovingUp", isMovingUp);
+
+       
 
     }
 
@@ -194,13 +201,18 @@ public class Player_Script : MonoBehaviour
     {
         if (facingRight && rb.velocity.x < -.1f)
             FlipHorizontal();
-        else if (!facingRight && rb.velocity.x > -.1f)
+        
+        else if (!facingRight && rb.velocity.x > .1f) 
             FlipHorizontal();
+
     }
 
     private void FlipHorizontal()
     {
+        facingDirection = facingDirection * -1;
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
     }
+
+    
 }
