@@ -121,7 +121,7 @@ public class Player_Script : MonoBehaviour
     {
         Debug.Log(transform.position.y);
         Vector2 verticalRayOrigin = new Vector2(
-            transform.position.x+0.2f,
+            transform.position.x,
             transform.position.y - distanceFromCenterV
         );
         Vector2 horizontalRayOrigin = new Vector2(
