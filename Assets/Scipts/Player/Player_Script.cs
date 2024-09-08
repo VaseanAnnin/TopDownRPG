@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player_Script : MonoBehaviour
 {
     public Rigidbody2D rb;
+
     //test
     public float MoveSpeedHorizontal;
     public float MoveSpeedVertical;
@@ -33,7 +34,6 @@ public class Player_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         Debug.Log("Code is running");
 
         AnimationControllers();
@@ -43,9 +43,8 @@ public class Player_Script : MonoBehaviour
         MoveVertical();
 
         FlipControllerHorizontal();
-    
-        OnDrawGizmos();
 
+        OnDrawGizmos();
     }
 
     private void AnimationControllers()
@@ -59,14 +58,19 @@ public class Player_Script : MonoBehaviour
 
         bool isMovingUp = rb.velocity.y > 0;
         anim.SetBool("isMovingUp", isMovingUp);
-
-       
-
     }
 
     public void MoveHorizontal()
     {
         float HZInput = Input.GetAxisRaw("Horizontal");
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            MoveSpeedHorizontal = 3;
+        }
+        else
+        {
+            MoveSpeedHorizontal = 1;
+        }
         //If the character is within the bounds it can move in that direction
         if (touchingRightBorder)
         {
@@ -87,13 +91,19 @@ public class Player_Script : MonoBehaviour
         {
             facingDirectionRight = 1;
         }
-
-
     }
 
     public void MoveVertical()
     {
         float VInput = Input.GetAxisRaw("Vertical");
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            MoveSpeedVertical = 3;
+        }
+        else
+        {
+            MoveSpeedVertical = 1;
+        }
         //Similar to move Horizontal
         if (touchingTopBorder)
         {
@@ -119,15 +129,41 @@ public class Player_Script : MonoBehaviour
 
     public void collisionChecks()
     {
-        Debug.Log(transform.position.y);
-        Vector2 verticalRayOrigin = new Vector2(
-            transform.position.x,
-            transform.position.y - distanceFromCenterV
-        );
-        Vector2 horizontalRayOrigin = new Vector2(
-            transform.position.x,
-            transform.position.y - distanceFromCenterH
-        ) ;
+        //Debug.Log(transform.position.y);
+        Vector2 verticalRayOrigin;
+
+        Vector2 horizontalRayOrigin;
+
+        if (facingDirectionRight == -1)
+        {
+            verticalRayOrigin = new Vector2(
+                transform.position.x + 0.6f,
+                transform.position.y - distanceFromCenterV
+            );
+        }
+        else
+        {
+            verticalRayOrigin = new Vector2(
+                transform.position.x - 0.6f,
+                transform.position.y - distanceFromCenterV
+            );
+        }
+        if (facingDirectionUp == -1)
+        {
+            distanceFromCenterH = Mathf.Abs(distanceFromCenterH) * -1;
+            horizontalRayOrigin = new Vector2(
+                transform.position.x,
+                transform.position.y - distanceFromCenterH
+            );
+        }
+        else
+        {
+            distanceFromCenterH = Mathf.Abs(distanceFromCenterH);
+            horizontalRayOrigin = new Vector2(
+                transform.position.x,
+                transform.position.y - distanceFromCenterH
+            );
+        }
 
         if (Input.GetAxisRaw("Vertical") < 0)
         {
@@ -141,7 +177,7 @@ public class Player_Script : MonoBehaviour
         else if (Input.GetAxisRaw("Vertical") > 0)
         {
             touchingTopBorder = Physics2D.Raycast(
-                transform.position,
+                verticalRayOrigin,
                 Vector2.down,
                 touchingTopBorderDistance * facingDirectionUp,
                 whatIsBorder
@@ -151,7 +187,7 @@ public class Player_Script : MonoBehaviour
         touchingRightBorder = Physics2D.Raycast(
             horizontalRayOrigin,
             Vector2.right,
-            (touchingRightBorderDistance-distanceFromCenterH) * facingDirectionRight,
+            (touchingRightBorderDistance - distanceFromCenterH) * facingDirectionRight,
             whatIsBorder
         );
     }
@@ -162,7 +198,7 @@ public class Player_Script : MonoBehaviour
         Vector2 verticalRayOrigin = new Vector2(
             transform.position.x,
             transform.position.y - distanceFromCenterV
-        ); 
+        );
         Vector2 horizontalRayOrigin = new Vector2(
             transform.position.x,
             transform.position.y - distanceFromCenterH
@@ -201,10 +237,8 @@ public class Player_Script : MonoBehaviour
     {
         if (facingRight && rb.velocity.x < -.1f)
             FlipHorizontal();
-        
-        else if (!facingRight && rb.velocity.x > .1f) 
+        else if (!facingRight && rb.velocity.x > .1f)
             FlipHorizontal();
-
     }
 
     private void FlipHorizontal()
@@ -213,6 +247,4 @@ public class Player_Script : MonoBehaviour
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
     }
-
-    
 }
