@@ -68,7 +68,7 @@ public class Player_Script : Entity
             MoveSpeedHorizontal = 1;
         }
         //If the character is within the bounds it can move in that direction
-        if (touchingRightBorder)
+        if (!touchingRightBorder)
         {
             rb.velocity = new Vector2(MoveSpeedHorizontal * HZInput, rb.velocity.y);
         }
@@ -101,7 +101,7 @@ public class Player_Script : Entity
             MoveSpeedVertical = 1;
         }
         //Similar to move Horizontal
-        if (touchingTopBorder)
+        if (!touchingTopBorder)
         {
             rb.velocity = new Vector2(rb.velocity.x, MoveSpeedVertical * VInput);
         }
