@@ -9,24 +9,24 @@ public class Entity : MonoBehaviour
     public Animator anim {get; private set;}
 
     [Header("Collision Info")]
-    protected LayerMask whatIsBorder;
-    protected float distanceFromCenterV;
-    protected float distanceFromCenterH;
+    [SerializeField] protected LayerMask whatIsBorder;
+    [SerializeField] protected float distanceFromCenterV;
+    [SerializeField] protected float distanceFromCenterH;
 
-    protected bool touchingTopBorder;
-    protected bool touchingRightBorder;
-    protected float touchingTopBorderDistance;
-    protected float touchingRightBorderDistance;
+    [SerializeField] protected bool touchingTopBorder;
+    [SerializeField] protected bool touchingRightBorder;
+    [SerializeField] protected float touchingTopBorderDistance;
+    [SerializeField] protected float touchingRightBorderDistance;
 
-
-
+    
+    
 
     protected float facingDirectionUp = 1;
     protected float facingDirectionRight = 1;
 
 
 
-    protected bool facingRight = true;
+    [SerializeField] protected bool facingRight = true;
     protected int facingDirection = 1;
 
 
@@ -85,24 +85,13 @@ public class Entity : MonoBehaviour
             );
         }
 
-        if (Input.GetAxisRaw("Vertical") < 0)
-        {
-            touchingTopBorder = Physics2D.Raycast(
+
+        touchingTopBorder = Physics2D.Raycast(
                 verticalRayOrigin,
                 Vector2.down,
                 touchingTopBorderDistance * facingDirectionUp,
                 whatIsBorder
             );
-        }
-        else if (Input.GetAxisRaw("Vertical") > 0)
-        {
-            touchingTopBorder = Physics2D.Raycast(
-                verticalRayOrigin,
-                Vector2.down,
-                touchingTopBorderDistance * facingDirectionUp,
-                whatIsBorder
-            );
-        }
 
         touchingRightBorder = Physics2D.Raycast(
             horizontalRayOrigin,
@@ -123,8 +112,7 @@ public class Entity : MonoBehaviour
             transform.position.x,
             transform.position.y - distanceFromCenterH
         );
-        if (Input.GetAxisRaw("Vertical") < 0)
-        {
+    
             Gizmos.DrawLine(
                 verticalRayOrigin,
                 new Vector3(
@@ -132,17 +120,7 @@ public class Entity : MonoBehaviour
                     transform.position.y - touchingTopBorderDistance * facingDirectionUp
                 )
             );
-        }
-        else if (Input.GetAxisRaw("Vertical") > 0)
-        {
-            Gizmos.DrawLine(
-                transform.position,
-                new Vector3(
-                    transform.position.x,
-                    transform.position.y - touchingTopBorderDistance * facingDirectionUp
-                )
-            );
-        }
+     
         Gizmos.DrawLine(
             horizontalRayOrigin,
             new Vector3(

@@ -10,11 +10,13 @@ public class Player_Script : Entity
     //test
     public float MoveSpeedHorizontal;
     public float MoveSpeedVertical;
-    
-    
+
+
+
+
+    public bool test;
 
     
-
 
     protected override void Awake()
     {
@@ -24,11 +26,16 @@ public class Player_Script : Entity
     protected override void Start() 
     {
         base.Start();
+
+        touchingRightBorderDistance = 0.48f;
+        distanceFromCenterH = 0.16f;
+        
     }
 
     // Update is called once per frame
     protected override void Update()
     {
+        
         base.Update();
         Debug.Log("Code is running");
 
@@ -58,7 +65,9 @@ public class Player_Script : Entity
 
     public void MoveHorizontal()
     {
+           
         float HZInput = Input.GetAxisRaw("Horizontal");
+        //enables sprinting when the left shift key is held
         if (Input.GetKey(KeyCode.LeftShift))
         {
             MoveSpeedHorizontal = 3;
@@ -68,7 +77,7 @@ public class Player_Script : Entity
             MoveSpeedHorizontal = 1;
         }
         //If the character is within the bounds it can move in that direction
-        if (!touchingRightBorder)
+        if (touchingRightBorder)
         {
             rb.velocity = new Vector2(MoveSpeedHorizontal * HZInput, rb.velocity.y);
         }
@@ -101,7 +110,7 @@ public class Player_Script : Entity
             MoveSpeedVertical = 1;
         }
         //Similar to move Horizontal
-        if (!touchingTopBorder)
+        if (touchingTopBorder)
         {
             rb.velocity = new Vector2(rb.velocity.x, MoveSpeedVertical * VInput);
         }

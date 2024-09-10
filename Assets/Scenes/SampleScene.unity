@@ -312,6 +312,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630ba23871044de448d3b7cfed360eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whatIsBorder:
+    serializedVersion: 2
+    m_Bits: 0
+  distanceFromCenterV: 0
+  distanceFromCenterH: 0
+  touchingTopBorder: 0
+  touchingRightBorder: 0
+  touchingTopBorderDistance: 0
+  touchingRightBorderDistance: 0
+  facingRight: 1
 --- !u!1 &1220550482
 GameObject:
   m_ObjectHideFlags: 0
@@ -2705,10 +2715,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ff6705477940d4fb1a058cce7493df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1416070921}
-  anim: {fileID: 1416070923}
-  facingDirectionUp: 1
-  facingDirectionRight: 1
+  whatIsBorder:
+    serializedVersion: 2
+    m_Bits: 64
+  distanceFromCenterV: 0
+  distanceFromCenterH: 0.16
+  touchingTopBorder: 0
+  touchingRightBorder: 0
+  touchingTopBorderDistance: 0
+  touchingRightBorderDistance: 0.48
+  facingRight: 1
   MoveSpeedHorizontal: 10
   MoveSpeedVertical: 10
 --- !u!95 &1416070923
