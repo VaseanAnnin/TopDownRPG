@@ -2706,20 +2706,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1416070921}
-  MoveSpeedHorizontal: 1
-  MoveSpeedVertical: 1
+  anim: {fileID: 1416070923}
   facingDirectionUp: 1
   facingDirectionRight: 1
-  whatIsBorder:
-    serializedVersion: 2
-    m_Bits: 64
-  distanceFromCenterV: 0
-  distanceFromCenterH: 0.16
-  touchingTopBorder: 0
-  touchingRightBorder: 0
-  touchingTopBorderDistance: 0
-  touchingRightBorderDistance: 0.48
-  anim: {fileID: 1416070923}
+  MoveSpeedHorizontal: 10
+  MoveSpeedVertical: 10
 --- !u!95 &1416070923
 Animator:
   serializedVersion: 5
@@ -2796,8 +2787,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2046041463
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 1211532246, guid: 0fff0d5047e4ba748b59f7eed4fad88a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

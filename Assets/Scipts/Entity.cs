@@ -4,18 +4,167 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
+
+    public Rigidbody2D rb {get; private set;}
+    public Animator anim {get; private set;}
+
+    [Header("Collision Info")]
+    protected LayerMask whatIsBorder;
+    protected float distanceFromCenterV;
+    protected float distanceFromCenterH;
+
+    protected bool touchingTopBorder;
+    protected bool touchingRightBorder;
+    protected float touchingTopBorderDistance;
+    protected float touchingRightBorderDistance;
+
+
+
+
+    protected float facingDirectionUp = 1;
+    protected float facingDirectionRight = 1;
+
+
+
+    protected bool facingRight = true;
+    protected int facingDirection = 1;
+
+
     protected virtual void Awake()
     {
 
     }
 
-    protected virtual void State()
+    protected virtual void Start()
     {
+        anim = GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody2D>();
 
     }
 
     protected virtual void Update()
     {
 
+    }
+
+    protected virtual void collisionChecks()
+    {
+        //Debug.Log(transform.position.y);
+        Vector2 verticalRayOrigin;
+
+        Vector2 horizontalRayOrigin;
+
+        if (facingDirectionRight == -1)
+        {
+            verticalRayOrigin = new Vector2(
+                transform.position.x + 0.6f,
+                transform.position.y - distanceFromCenterV
+            );
+        }
+        else
+        {
+            verticalRayOrigin = new Vector2(
+                transform.position.x - 0.6f,
+                transform.position.y - distanceFromCenterV
+            );
+        }
+        if (facingDirectionUp == -1)
+        {
+            distanceFromCenterH = Mathf.Abs(distanceFromCenterH) * -1;
+            horizontalRayOrigin = new Vector2(
+                transform.position.x,
+                transform.position.y - distanceFromCenterH
+            );
+        }
+        else
+        {
+            distanceFromCenterH = Mathf.Abs(distanceFromCenterH);
+            horizontalRayOrigin = new Vector2(
+                transform.position.x,
+                transform.position.y - distanceFromCenterH
+            );
+        }
+
+        if (Input.GetAxisRaw("Vertical") < 0)
+        {
+            touchingTopBorder = Physics2D.Raycast(
+                verticalRayOrigin,
+                Vector2.down,
+                touchingTopBorderDistance * facingDirectionUp,
+                whatIsBorder
+            );
+        }
+        else if (Input.GetAxisRaw("Vertical") > 0)
+        {
+            touchingTopBorder = Physics2D.Raycast(
+                verticalRayOrigin,
+                Vector2.down,
+                touchingTopBorderDistance * facingDirectionUp,
+                whatIsBorder
+            );
+        }
+
+        touchingRightBorder = Physics2D.Raycast(
+            horizontalRayOrigin,
+            Vector2.right,
+            (touchingRightBorderDistance - distanceFromCenterH) * facingDirectionRight,
+            whatIsBorder
+        );
+    }
+
+    protected virtual void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Vector2 verticalRayOrigin = new Vector2(
+            transform.position.x,
+            transform.position.y - distanceFromCenterV
+        );
+        Vector2 horizontalRayOrigin = new Vector2(
+            transform.position.x,
+            transform.position.y - distanceFromCenterH
+        );
+        if (Input.GetAxisRaw("Vertical") < 0)
+        {
+            Gizmos.DrawLine(
+                verticalRayOrigin,
+                new Vector3(
+                    transform.position.x,
+                    transform.position.y - touchingTopBorderDistance * facingDirectionUp
+                )
+            );
+        }
+        else if (Input.GetAxisRaw("Vertical") > 0)
+        {
+            Gizmos.DrawLine(
+                transform.position,
+                new Vector3(
+                    transform.position.x,
+                    transform.position.y - touchingTopBorderDistance * facingDirectionUp
+                )
+            );
+        }
+        Gizmos.DrawLine(
+            horizontalRayOrigin,
+            new Vector3(
+                touchingRightBorderDistance * facingDirectionRight + transform.position.x,
+                transform.position.y
+            )
+        );
+        // Gizmos.DrawLine(transform.position, new Vector3(touchingRightBorderDistance*facingDirectionRight + transform.position.x, transform.position.y));
+    }
+
+    protected virtual void FlipControllerHorizontal()
+    {
+        if (facingRight && rb.velocity.x < -.1f)
+            FlipHorizontal();
+        else if (!facingRight && rb.velocity.x > .1f)
+            FlipHorizontal();
+    }
+
+    protected virtual void FlipHorizontal()
+    {
+        facingDirection = facingDirection * -1;
+        facingRight = !facingRight;
+        transform.Rotate(0, 180, 0);
     }
 }
