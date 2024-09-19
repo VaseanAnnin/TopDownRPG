@@ -181,6 +181,7 @@ Transform:
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &92784558
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,6 +287,8 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+=======
+>>>>>>> parent of d41210e (Added inventory bar and inventory bar selection)
 =======
 >>>>>>> parent of d41210e (Added inventory bar and inventory bar selection)
 --- !u!1 &168426669
