@@ -6,14 +6,12 @@ using UnityEngine.UI;
 
 public class Status_Manager : MonoBehaviour
 {
-    private float clamps = 0;
     public Image healthBar;
     public float healthAmount = 100f;
     public Image hungerBar;
     public float hungerAmount = 100f;
     public Image sanityBar;
     public float sanityAmount = 100f;
-    public Image inventoryHighlight;
 
     // Start is called before the first frame update
     void Start() { }
@@ -28,7 +26,6 @@ public class Status_Manager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            Debug.Log("Bubbles1");
             TakeDamage(20);
         }
         if (Input.GetKeyDown(KeyCode.F))
@@ -38,11 +35,6 @@ public class Status_Manager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             Magic(20);
-        }
-
-        if (Input.mouseScrollDelta.y != 0)
-        {
-            Shift(Input.mouseScrollDelta.y);
         }
     }
 
@@ -86,40 +78,5 @@ public class Status_Manager : MonoBehaviour
         sanityAmount = Mathf.Clamp(sanityAmount, 0, 100);
 
         sanityBar.fillAmount = sanityAmount / 100f;
-    }
-
-    public void Shift(float direction)
-    {
-        //Gets the rect transform of the inventory highlight box
-        RectTransform rectTransform = inventoryHighlight.GetComponent<RectTransform>();
-
-        //For some reason I need to assign a variable to the ANCHORED position before I can change it, but here I'm setting the current
-        //position equal to the anchored position of the highlight box
-        Vector2 currentPos = rectTransform.anchoredPosition;
-
-        //Initialized a variable called clamps which binds the highlight box within a certain range
-        if (direction > 0)
-            //adds 104 to the clamp anytime the box moves up
-            clamps += 104;
-        else
-            //vise versa
-            clamps -= 104;
-
-        //Moves the box 104 pixels
-        currentPos.x += 104 * direction;
-
-        //Controls the snapping
-        if (clamps > 416)
-        {
-            currentPos.x -= clamps;
-            clamps = 0;
-        }
-        else if (clamps < 0)
-        {
-            currentPos.x += 520;
-            clamps = 416;
-        }
-
-        rectTransform.anchoredPosition = currentPos;
     }
 }

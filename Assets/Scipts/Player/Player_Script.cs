@@ -5,31 +5,39 @@ using UnityEngine;
 
 public class Player_Script : Entity
 {
+    
+
     //test
     public float MoveSpeedHorizontal;
     public float MoveSpeedVertical;
 
+
+
+
     public bool test;
+
+    
 
     protected override void Awake()
     {
-        base.Awake();
+        base.Awake();    
     }
-
     // Start is called before the first frame update
-    protected override void Start()
+    protected override void Start() 
     {
         base.Start();
 
         touchingRightBorderDistance = 0.48f;
         distanceFromCenterH = 0.16f;
+        
     }
 
     // Update is called once per frame
     protected override void Update()
     {
+        
         base.Update();
-        //Debug.Log("Code is running");
+        Debug.Log("Code is running");
 
         AnimationControllers();
         collisionChecks();
@@ -39,7 +47,7 @@ public class Player_Script : Entity
 
         FlipControllerHorizontal();
 
-        //OnDrawGizmos();
+        OnDrawGizmos();
     }
 
     private void AnimationControllers()
@@ -57,6 +65,7 @@ public class Player_Script : Entity
 
     public void MoveHorizontal()
     {
+           
         float HZInput = Input.GetAxisRaw("Horizontal");
         //enables sprinting when the left shift key is held
         if (Input.GetKey(KeyCode.LeftShift))
@@ -122,4 +131,8 @@ public class Player_Script : Entity
             facingDirectionUp = 1;
         }
     }
+
+   
+
+    
 }
