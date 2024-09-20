@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Entity
+public class Enemy : MonoBehaviour
 {
-   
+    public Rigidbody2D rb { get; private set; }
+    public Animator anim { get; private set; }
 
     public EnemyStateMachine stateMachine { get; private set; }
 
@@ -12,15 +13,17 @@ public class Enemy : Entity
     public float RandomMovementSpeed = 1f;
 
 
+<<<<<<< HEAD
     protected override void Awake()
+=======
+    private void Awake()
+>>>>>>> parent of a0aba26 (Merge branch 'Backup' into New-Head)
     {
-        base.Awake();
         stateMachine = new EnemyStateMachine();
     }
 
-    protected override void Update()
+    void Update()
     {
-        base.Update();
         stateMachine.currentState.Update();
     }
 
