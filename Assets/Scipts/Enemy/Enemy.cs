@@ -8,9 +8,6 @@ public class Enemy : Entity
 
     public EnemyStateMachine stateMachine { get; private set; }
 
-    public float RandomMovementRange = 5f;
-    public float RandomMovementSpeed = 1f;
-
 
     protected override void Awake()
     {
@@ -22,10 +19,5 @@ public class Enemy : Entity
     {
         base.Update();
         stateMachine.currentState.Update();
-    }
-
-    public void MoveEnemy(Vector2 velocity)
-    {
-        rb.velocity = velocity;
     }
 }
