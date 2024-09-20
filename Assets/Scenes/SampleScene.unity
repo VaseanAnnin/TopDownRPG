@@ -123,7 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &271831131
+=======
+--- !u!1 &25052527
+>>>>>>> parent of a0aba26 (Merge branch 'Backup' into New-Head)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,18 +135,28 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 271831132}
   - component: {fileID: 271831133}
   - component: {fileID: 271831135}
   - component: {fileID: 271831134}
   m_Layer: 0
   m_Name: Enemy_Slime
+=======
+  - component: {fileID: 25052529}
+  - component: {fileID: 25052528}
+  m_Layer: 0
+  m_Name: Status Manager
+>>>>>>> parent of a0aba26 (Merge branch 'Backup' into New-Head)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<<<< Temporary merge branch 1
+=======
+>>>>>>> parent of a0aba26 (Merge branch 'Backup' into New-Head)
 --- !u!114 &25052528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3298,7 +3312,10 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+<<<<<<< HEAD
 <<<<<<<<< Temporary merge branch 1
+=======
+>>>>>>> parent of a0aba26 (Merge branch 'Backup' into New-Head)
 --- !u!1 &1500414673
 GameObject:
 =========
@@ -3631,6 +3648,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 1684841635}
   m_CullTransparentMesh: 1
 --- !u!1 &1845387919
+<<<<<<< HEAD
 =========
   m_GameObject: {fileID: 1416070918}
   m_Enabled: 1
@@ -3663,6 +3681,8 @@ CanvasRenderer:
   m_Direction: 0
 --- !u!1 &1765511193
 >>>>>>>>> Temporary merge branch 2
+=======
+>>>>>>> parent of a0aba26 (Merge branch 'Backup' into New-Head)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3670,16 +3690,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 1765511194}
   - component: {fileID: 1765511195}
   - component: {fileID: 1765511196}
   m_Layer: 0
   m_Name: Animator
+=======
+  - component: {fileID: 1845387921}
+  - component: {fileID: 1845387920}
+  m_Layer: 0
+  m_Name: Slime_0
+>>>>>>> parent of a0aba26 (Merge branch 'Backup' into New-Head)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!4 &1765511194
 Transform:
   m_ObjectHideFlags: 0
@@ -3696,12 +3724,19 @@ Transform:
   m_Father: {fileID: 271831132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1765511195
+=======
+--- !u!212 &1845387920
+>>>>>>> parent of a0aba26 (Merge branch 'Backup' into New-Head)
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1765511193}
+=======
+  m_GameObject: {fileID: 1845387919}
+>>>>>>> parent of a0aba26 (Merge branch 'Backup' into New-Head)
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -3747,14 +3782,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+<<<<<<< HEAD
 --- !u!95 &1765511196
 Animator:
   serializedVersion: 5
+=======
+--- !u!4 &1845387921
+Transform:
+>>>>>>> parent of a0aba26 (Merge branch 'Backup' into New-Head)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<<<< Temporary merge branch 1
+=======
+>>>>>>> parent of a0aba26 (Merge branch 'Backup' into New-Head)
   m_GameObject: {fileID: 1845387919}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -4227,11 +4270,15 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1845387921}
   - {fileID: 519420032}
   - {fileID: 1416070920}
   - {fileID: 1356891526}
   - {fileID: 886832944}
+<<<<<<< HEAD
 <<<<<<<<< Temporary merge branch 1
+=======
+>>>>>>> parent of a0aba26 (Merge branch 'Backup' into New-Head)
   - {fileID: 1939348268}
   - {fileID: 1544646101}
   - {fileID: 304031356}
