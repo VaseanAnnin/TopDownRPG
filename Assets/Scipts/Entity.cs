@@ -17,9 +17,9 @@ public class Entity : MonoBehaviour
     [SerializeField] protected bool touchingRightBorder;
     [SerializeField] protected float touchingTopBorderDistance;
     [SerializeField] protected float touchingRightBorderDistance;
-    public Vector2 currentPos;
 
-
+    
+    
 
     protected float facingDirectionUp = 1;
     protected float facingDirectionRight = 1;
@@ -39,21 +39,12 @@ public class Entity : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        rb.freezeRotation = true;
-        currentPos = rb.transform.position;
+
     }
 
     protected virtual void Update()
     {
-        if (rb.transform.position.y > currentPos.y)
-        {
-            touchingTopBorderDistance = -0.68f;
-        }
-        else if (rb.transform.position.y < currentPos.y) {
-            touchingTopBorderDistance = -0.28f;
-        }
-        currentPos = rb.transform.position;
-  
+
     }
 
     protected virtual void collisionChecks()
@@ -154,11 +145,4 @@ public class Entity : MonoBehaviour
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
     }
-    /*
-    protected virtual void canMove(float movementSpeed) {
-        if (!touchingTopBorder)
-        {
-            rb.transform.position.y
-        }
-    }*/
 }

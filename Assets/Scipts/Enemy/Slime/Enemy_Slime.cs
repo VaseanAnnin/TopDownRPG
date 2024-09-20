@@ -25,15 +25,5 @@ public class Enemy_Slime : Enemy
     protected override void Update()
     {
         base.Update();
-
-     
-        
-
-       
-        collisionChecks();
-
-        FlipControllerHorizontal();
-
-        OnDrawGizmos();
     }
 }

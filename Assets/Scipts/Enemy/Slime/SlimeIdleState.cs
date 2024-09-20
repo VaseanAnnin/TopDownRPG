@@ -18,7 +18,7 @@ public class SlimeIdleState : EnemyState
     {
         base.Enter();
 
-        stateTimer = 5f;
+        stateTimer = 1f;
     }
 
     public override void Exit()
