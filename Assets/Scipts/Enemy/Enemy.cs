@@ -9,6 +9,9 @@ public class Enemy : MonoBehaviour
 
     public EnemyStateMachine stateMachine { get; private set; }
 
+    public float RandomMovementRange = 5f;
+    public float RandomMovementSpeed = 1f;
+
 
 <<<<<<< HEAD
     protected override void Awake()
@@ -22,5 +25,10 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         stateMachine.currentState.Update();
+    }
+
+    public void MoveEnemy(Vector2 velocity)
+    {
+        rb.velocity = velocity;
     }
 }
