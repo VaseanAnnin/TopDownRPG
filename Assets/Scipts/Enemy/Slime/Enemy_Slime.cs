@@ -34,6 +34,6 @@ public class Enemy_Slime : Enemy
 
         FlipControllerHorizontal();
 
-        OnDrawGizmos();
+        
     }
 }
