@@ -13,6 +13,10 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y);
+        transform.position = new Vector3(
+            player.transform.position.x,
+            player.transform.position.y,
+            player.transform.position.z
+        );
     }
 }
