@@ -4,36 +4,39 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-
-    public Rigidbody2D rb {get; private set;}
-    public Animator anim {get; private set;}
+    public Rigidbody2D rb { get; private set; }
+    public Animator anim { get; private set; }
 
     [Header("Collision Info")]
-    [SerializeField] protected LayerMask whatIsBorder;
-    [SerializeField] protected float distanceFromCenterV;
-    [SerializeField] protected float distanceFromCenterH;
+    [SerializeField]
+    protected LayerMask whatIsBorder;
 
-    [SerializeField] protected bool touchingTopBorder;
-    [SerializeField] protected bool touchingRightBorder;
-    [SerializeField] protected float touchingTopBorderDistance;
-    [SerializeField] protected float touchingRightBorderDistance;
+    [SerializeField]
+    protected float distanceFromCenterV;
+
+    [SerializeField]
+    protected float distanceFromCenterH;
+
+    [SerializeField]
+    protected bool touchingTopBorder;
+
+    [SerializeField]
+    protected bool touchingRightBorder;
+
+    [SerializeField]
+    protected float touchingTopBorderDistance;
+
+    [SerializeField]
+    protected float touchingRightBorderDistance;
     public Vector2 currentPos;
-
-
 
     protected float facingDirectionUp = 1;
     protected float facingDirectionRight = 1;
 
+    [SerializeField]
+    protected bool facingRight = true;
 
-
-    [SerializeField] protected bool facingRight = true;
-    protected int facingDirection = 1;
-
-
-    protected virtual void Awake()
-    {
-
-    }
+    protected virtual void Awake() { }
 
     protected virtual void Start()
     {
@@ -49,18 +52,16 @@ public class Entity : MonoBehaviour
         {
             touchingTopBorderDistance = -0.68f;
         }
-        else if (rb.transform.position.y < currentPos.y) {
+        else if (rb.transform.position.y < currentPos.y)
+        {
             touchingTopBorderDistance = -0.28f;
         }
         currentPos = rb.transform.position;
-  
     }
 
     protected virtual void collisionChecks()
     {
-        //Debug.Log(transform.position.y);
         Vector2 verticalRayOrigin;
-
         Vector2 horizontalRayOrigin;
 
         if (facingDirectionRight == -1)
@@ -94,13 +95,12 @@ public class Entity : MonoBehaviour
             );
         }
 
-
         touchingTopBorder = Physics2D.Raycast(
-                verticalRayOrigin,
-                Vector2.down,
-                touchingTopBorderDistance * facingDirectionUp,
-                whatIsBorder
-            );
+            verticalRayOrigin,
+            Vector2.down,
+            touchingTopBorderDistance * facingDirectionUp,
+            whatIsBorder
+        );
 
         touchingRightBorder = Physics2D.Raycast(
             horizontalRayOrigin,
@@ -121,15 +121,15 @@ public class Entity : MonoBehaviour
             transform.position.x,
             transform.position.y - distanceFromCenterH
         );
-    
-            Gizmos.DrawLine(
-                verticalRayOrigin,
-                new Vector3(
-                    transform.position.x,
-                    transform.position.y - touchingTopBorderDistance * facingDirectionUp
-                )
-            );
-     
+
+        Gizmos.DrawLine(
+            verticalRayOrigin,
+            new Vector3(
+                transform.position.x,
+                transform.position.y - touchingTopBorderDistance * facingDirectionUp
+            )
+        );
+
         Gizmos.DrawLine(
             horizontalRayOrigin,
             new Vector3(
@@ -150,7 +150,7 @@ public class Entity : MonoBehaviour
 
     protected virtual void FlipHorizontal()
     {
-        facingDirection = facingDirection * -1;
+        facingDirectionRight = facingDirectionRight * -1;
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
     }

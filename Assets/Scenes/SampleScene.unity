@@ -832,6 +832,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e99c6be8e1796a4685b66f53e336559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whatIsBorder:
+    serializedVersion: 2
+    m_Bits: 0
+  distanceFromCenterV: 0
+  distanceFromCenterH: 0
+  touchingTopBorder: 0
+  touchingRightBorder: 0
+  touchingTopBorderDistance: 0
+  touchingRightBorderDistance: 0
+  currentPos: {x: 0, y: 0}
+  facingRight: 1
+  player: {fileID: 1416070918}
+  offset: 1.5
+  offsetSmoothing: 2
 --- !u!1 &886832942
 GameObject:
   m_ObjectHideFlags: 0

@@ -113,12 +113,9 @@ public class Player_Script : Entity
         if (VInput < 0)
         {
             facingDirectionUp = -1;
-            //Trying to make sure the character doesn't go too far beyond the border
-            touchingTopBorderDistance = -0.28f;
         }
         else if (VInput > 0)
         {
-            touchingTopBorderDistance = -0.68f;
             facingDirectionUp = 1;
         }
     }
